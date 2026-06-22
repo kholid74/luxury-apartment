@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { images } from '../../data/images';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'the-art-of-vertical-living' } },
+    { params: { slug: 'south-jakarta-evolution' } },
+    { params: { slug: 'understanding-luxury-property-investment' } },
+    { params: { slug: 'the-craft-of-curated-living' } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+const articles = {
+  'the-art-of-vertical-living': {
+    title: 'The Art of Vertical Living',
+    subtitle: 'How Architecture Shapes the Luxury Experience',
+    category: 'Design & Craftsmanship',
+    date: 'March 2024',
+    dek: 'From the weight of a door to the height of a ceiling, the architecture of a luxury residence operates on the senses long before the conscious mind registers what it has encountered. This is the quiet vocabulary of refined space.',
+    body: [
+      'There is a moment, brief and almost imperceptible, that occurs each time one steps from the public corridor of a thoughtfully designed residence into its private interior. The threshold is not merely a line on a floor plan; it is a carefully calibrated transition — a change in light temperature, a shift in acoustic signature, a subtle compression of space that releases into volume. The architecture has, in that instant, done its work. It has signaled, without a single word, that one has arrived somewhere distinct.',
+      'This is the art of vertical living at its most refined: not the accumulation of expensive materials or the stacking of square metres, but the orchestration of experience through space. In the luxury residential towers that now define the skylines of the world\'s most desirable cities, architecture has transcended its functional origins to become the primary medium through which residents encounter quality, every day.',
+      'Consider the ceiling. In a residence designed around the principles of luxury hospitality, the ceiling becomes one of the most important surfaces in the room. Its height dictates the emotional register of the space: 2.7 metres reads as adequate; 3.2 metres introduces a quality of calm; at 3.6 metres and above, the space begins to feel genuinely generous. But height alone is insufficient. The treatment of the ceiling plane — the integration of lighting coves that wash walls with indirect illumination, the careful alignment of ceiling joints with room axes — is what separates a well-proportioned room from a considered one. These details are invisible in photographs. They are felt, not seen.',
+      'The materials selected for a luxury residence carry a double burden: they must perform technically — resisting wear, aging gracefully — and they must communicate. A floor of book-matched marble does not simply provide a walking surface. It tells the resident that someone, at some point in the design process, cared enough to source two adjacent slabs from the same quarry block, cut and opened like the pages of a book, so that the veining pattern reads as a continuous composition across the room.',
+      'In vertical living, the window is the single most consequential architectural element. It mediates the relationship between the private interior and the city beyond — a relationship that must be simultaneously expansive and controlled. Floor-to-ceiling glazing, when executed without intrusive frames, dissolves the boundary between inside and out. The architecture must also provide the means to withdraw — motorised blinds, integrated into the ceiling detail, offering residents complete command over their exposure. This is privacy not as seclusion but as choice.',
+      'A well-composed floor plan reads like good prose: logical in its sequencing, economical in its transitions, and generous where generosity matters most. In the finest luxury residences, the plan accommodates two simultaneous modes of occupation: the grand and the intimate. A dining room that seats twelve without crowding; a breakfast alcove that seats two without feeling cavernous. This is the quiet intelligence of architecture at its best. It does not demand attention. It simply works.',
+    ],
+    pullQuote: 'The ceiling became one of the most important surfaces in the room — its height dictating the emotional register of the space.',
+  },
+  'south-jakarta-evolution': {
+    title: "South Jakarta's Evolution",
+    subtitle: 'From Garden City to Global Address',
+    category: 'Lifestyle & Neighborhood',
+    date: 'April 2024',
+    dek: 'Few urban precincts in Southeast Asia have undergone a transformation as complete as South Jakarta\'s journey from planned suburban retreat to the most coveted residential address in the archipelago.',
+    body: [
+      'To understand South Jakarta as it exists today — a constellation of tree-lined avenues, international schools, diplomatic compounds, and residential towers that rival the offerings of Singapore and Hong Kong — one must first understand what it was designed to become. The answer lies not in a single masterstroke but in a slow, deliberate accretion of decisions made across decades.',
+      'The story begins in the 1950s, when Kebayoran Baru was conceived as Jakarta\'s first planned satellite town — a "garden city" in the tradition of Ebenezer Howard\'s early 20th-century urban planning philosophy. The vision was radical for its time: a self-contained community with generous green space, wide boulevards, and residential blocks arranged around central parks. The planners could not have predicted what would follow. As Jakarta expanded southward, Kebayoran Baru\'s position — adjacent to the city\'s commercial spine but buffered by its own internal logic of parks and quiet streets — proved to be not merely pleasant but profoundly strategic.',
+      'The construction of Jalan Jenderal Sudirman as Jakarta\'s primary commercial artery established the corridor that would eventually become the SCBD (Sudirman Central Business District) — Southeast Asia\'s most concentrated financial precinct outside Singapore. The completion of the inner-city toll road network connected South Jakarta to Soekarno-Hatta International Airport in under an hour. Most recently, the opening of the MRT Jakarta North-South line brought rail-based mass transit to a neighborhood that had long been defined by road transport. Each infrastructure milestone signaled permanence.',
+      'Neighborhoods are not made by planners and engineers alone. They are made by the people who choose to live in them. The 1990s brought expatriate executives drawn by the combination of established housing stock, international schools, and easy access to the SCBD. The 2000s saw Indonesian professionals returning from abroad with global reference points. The 2010s brought regional investors and professionals from across ASEAN, for whom Jakarta represents a market of scale unavailable in the smaller city-states.',
+      'Perhaps the most remarkable aspect of South Jakarta\'s transformation is what has been preserved. Unlike many Asian cities where development has meant the systematic elimination of green space, South Jakarta retains significant pockets of mature vegetation. The tree canopies that shade Jalan Gunawarman and Jalan Kemang, the neighborhood parks of Kebayoran Baru, the golf courses that provide an unexpected lung of green in the heart of the city — these are not vestiges but active, valued, and fiercely protected components of the neighborhood\'s identity.',
+      'South Jakarta has entered a phase of its evolution where it no longer needs to announce itself. The international schools are here. The private hospitals are here. The embassies are here. The restaurants that matter are here. The address has accumulated, over decades, a density of institutional validation that no marketing budget can manufacture. For the buyer considering a residence at The Meridian, the neighborhood is the larger asset — the one that will continue to appreciate long after the paint has dried.',
+    ],
+    pullQuote: 'The garden city, designed for escape, had become the city\'s most desirable point of connection.',
+  },
+  'understanding-luxury-property-investment': {
+    title: 'Understanding Luxury Property Investment',
+    subtitle: 'A Primer for the Discerning Buyer',
+    category: 'Investment Intelligence',
+    date: 'May 2024',
+    dek: 'The Indonesian luxury property market operates on principles that distinguish it from more familiar investment territories. For the buyer who understands its architecture — legal, financial, and cultural — it presents a proposition of enduring substance.',
+    body: [
+      'Indonesia occupies a curious position in the imagination of international property investors. It is the largest economy in Southeast Asia, the fourth most populous nation on earth, and home to a rapidly expanding class of high-net-worth individuals. Yet its luxury property market remains, by global standards, relatively unexplored by foreign capital — a condition that presents both opportunity and complexity in equal measure.',
+      'Every property market is shaped by supply and demand. In the luxury segment, supply is constrained not merely by the availability of capital but by the availability of land that meets the narrow criteria for a premium address. In Jakarta, that land is concentrated in a handful of precincts in the city\'s south. New supply in these precincts is inherently limited. Land parcels of sufficient scale for a comprehensive luxury development are rare; when they become available, the competition to secure them reflects their scarcity value.',
+      'Indonesia\'s property title system is distinct from the freehold/leasehold dichotomy familiar to Commonwealth investors. Hak Milik (Right of Ownership) is restricted to Indonesian citizens, while Hak Pakai (Right of Use) provides secure tenure for international buyers with rights of renewal. A development that can offer both structures operates with a structural advantage in a market where both constituencies represent significant demand. Prospective buyers are well advised to engage legal counsel with specific experience in luxury property transactions.',
+      'Indonesian luxury property is priced in Rupiah, introducing a currency dimension absent from dollar-denominated markets. For the international buyer, the exchange rate becomes a variable in the investment equation. Staggered payment schedules, tied to construction milestones, can smooth currency exposure over time. And over the holding periods typical of luxury property — measured in decades, not years — short-term currency movements tend to recede in significance relative to the underlying asset\'s capital appreciation.',
+      'There is a dimension of Indonesian property investment that resists quantification: the role of relationship. In a market where the most desirable transactions often occur before they reach public listing, access to the right conversations is a form of infrastructure in itself. The developer\'s network constitutes an invisible asset that shapes outcomes in ways a prospectus cannot fully capture.',
+      'Luxury property investment is, by its nature, a long-duration proposition. The costs of acquisition are not recouped in the short term. The asset class rewards patience and punishes the impulse to trade. For the buyer who can deploy capital with a decade-long horizon, who understands that the finest residences tend to appreciate in punctuated leaps — years of stability followed by a step-change driven by an infrastructure opening or a rezoning — the Indonesian luxury market offers genuine scarcity, in a genuinely growing economy.',
+    ],
+    pullQuote: 'The asset class rewards patience, and it punishes the impulse to trade.',
+  },
+  'the-craft-of-curated-living': {
+    title: 'The Craft of Curated Living',
+    subtitle: 'Behind The Meridian Residences',
+    category: 'Brand Narrative',
+    date: 'June 2024',
+    dek: 'Every residence tells a story — of the land it occupies, the hands that shaped it, and the philosophy that governed every decision along the way. This is the story of The Meridian Residences, a proposition built not on square metres but on intention.',
+    body: [
+      'The luxury residence, at its best, is an act of curation. It is not a container for possessions but a framework for living — a carefully edited sequence of spaces, materials, and atmospheres that together constitute an environment greater than the sum of its parts. The Meridian Residences began with this conviction, and every subsequent decision has been tested against it. To curate is to choose. And to choose well, one must first know what to exclude.',
+      'Every residence is, before it is anything else, a response to a specific piece of ground. The site that The Meridian occupies — a parcel in South Jakarta\'s established residential heart — brought with it a set of conditions that became foundational design parameters. The orientation offered a long vista across the tree canopy of Kebayoran Baru, with the Jakarta skyline rising in the middle distance. The architecture responds by opening generously to this view, with deep balconies and floor-to-ceiling glazing. The surrounding streetscape suggested a building that should belong rather than announce — a façade of quiet authority: bronze-toned vertical fins creating a rhythm of light and shadow.',
+      'Luxury is often discussed in terms of what is visible: the marble, the joinery, the views. But the experience of living in a residence of this calibre is shaped just as profoundly by what is not seen. At The Meridian, the architecture of service begins at arrival. Residents and guests are welcomed through a porte-cochère into a lobby conceived not as a transit point but as a destination. Discreet service elevators handle deliveries, refuse, and staff movement entirely out of sight. Within each residence, service entrances operate on a parallel logic — connected when needed, invisible when not.',
+      'A building\'s material palette is its most honest expression. The Meridian speaks in a vocabulary of restraint: warm neutrals — ivory stone, dark timber, bronzed metal — that provide a calm backdrop. Accents of champagne gold appear sparingly: in door handles, joinery reveals, custom-designed lighting fixtures. The bathrooms are clad in honed marble, floor-to-ceiling, with book-matched veining. Tapware in a warm metallic finish resists fingerprints — a detail that seems minor until one has lived with polished chrome that requires constant attention.',
+      'If the bathroom reveals a residence\'s approach to luxury, the kitchen reveals its approach to life. At The Meridian, the kitchen is conceived as a space of genuine occupation — a room where cooking happens, where people gather. Induction cooking surfaces disappear into the counter when not in use. Storage is generous and specific. The island functions as a social anchor, generous enough for breakfast, homework, and conversation. Appliances are selected for performance and longevity from manufacturers whose names carry weight with those who cook seriously.',
+      'The final measure of a luxury residence is not how it photographs on the day of completion. It is how it lives — how it absorbs the presence of its residents, accommodates their evolving needs, and continues to feel like the right decision years after the contract has been signed. The Meridian was designed for this long view. Floor plans are flexible without being vague. Technology infrastructure is specified with capacity for upgrades. This is the craft of curated living: the creation of a residence that does not demand its occupant adapt to it, but instead adapts, quietly and continuously, to the life unfolding within it.',
+    ],
+    pullQuote: 'The greatest luxury is competence — a space designed by people who understand that beauty without function is merely decoration.',
+  },
+};
+
+const article = articles[slug];
+
+const journalImages = {
+  'the-art-of-vertical-living': images.journal.architecture,
+  'south-jakarta-evolution': images.journal.cityscape,
+  'understanding-luxury-property-investment': images.journal.investment,
+  'the-craft-of-curated-living': images.journal.craftsmanship,
+};
+
+if (!article) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout>
+  <slot name="head">
+    <title>{article.title} — The Meridian Residences | The Journal</title>
+    <meta name="description" content={article.dek} />
+  </slot>
+
+  <!-- Article Hero -->
+  <section class="pt-48 pb-16 bg-primary-black">
+    <div class="container-standard reveal">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-xs text-gold uppercase tracking-widest font-medium mb-4">{article.category}</p>
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-primary-ivory leading-tight mb-4">
+          {article.title}
+        </h1>
+        <p class="text-xl md:text-2xl text-neutral-300 leading-relaxed mb-6">
+          {article.subtitle}
+        </p>
+        <p class="text-sm text-neutral-500">{article.date} · By the Editorial Desk</p>
+        <p class="text-xs text-gold mt-4 uppercase tracking-widest">[SHOWCASE CONCEPT — EDITORIAL SAMPLE]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Hero Image -->
+  <img src={journalImages[slug]} alt={article.title} class="w-full h-64 md:h-96 object-cover rounded-sm mb-8" />
+
+  <!-- Article Body -->
+  <section class="bg-primary-black">
+    <article class="container-standard reveal">
+      <div class="max-w-3xl mx-auto">
+        <!-- Dek -->
+        <p class="text-lg text-neutral-300 leading-relaxed mb-12 italic">
+          {article.dek}
+        </p>
+
+        <!-- ID Summary -->
+        <p class="lang-id text-neutral-400 italic mb-8">
+          Ringkasan Bahasa Indonesia: Artikel ini merupakan konten editorial berbahasa Inggris yang membahas
+          {article.category === 'Design & Craftsmanship' ? 'arsitektur dan keahlian rancang bangun dalam konteks hunian vertikal mewah' :
+           article.category === 'Lifestyle & Neighborhood' ? 'evolusi kawasan Jakarta Selatan dari kota taman menjadi alamat global paling prestisius' :
+           article.category === 'Investment Intelligence' ? 'prinsip-prinsip investasi properti mewah di Indonesia bagi pembeli cerdas' :
+           'filosofi di balik The Meridian Residences — hunian yang dibangun berdasarkan intensi, bukan sekadar luas ruang'}.
+          Untuk menikmati nuansa editorial sepenuhnya, kami sarankan membaca dalam bahasa Inggris.
+        </p>
+
+        <!-- Body paragraphs -->
+        <div class="space-y-8 text-lg text-neutral-300 leading-relaxed">
+          {article.body.map((paragraph, i) => (
+            <p>{paragraph}</p>
+          ))}
+
+          {article.pullQuote && (
+            <div class="pull-quote my-12">
+              {article.pullQuote}
+            </div>
+          )}
+
+          <!-- After pull quote, if there are remaining paragraphs they continue -->
+        </div>
+
+        <!-- Attribution -->
+        <div class="mt-16 pt-8 border-t border-primary-ivory/5">
+          <p class="text-sm text-neutral-500">By the Editorial Desk</p>
+          <p class="text-xs text-gold mt-2 uppercase tracking-widest">[SHOWCASE CONCEPT — EDITORIAL SAMPLE]</p>
+        </div>
+
+        <!-- Back to Journal -->
+        <div class="mt-12">
+          <a href="/journal" class="btn btn-outline-light btn-sm" data-lang-en="← Back to Journal" data-lang-id="← Kembali ke Jurnal">← Back to Journal</a>
+        </div>
+      </div>
+    </article>
+  </section>
+</Layout>

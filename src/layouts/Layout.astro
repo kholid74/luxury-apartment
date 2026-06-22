@@ -1,0 +1,339 @@
+---
+// Base layout for The Meridian Residences
+import { site, navigation, footer } from "../data/site";
+import "../styles/global.css";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{site.name} — {site.tagline}</title>
+    <meta name="description" content={site.description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${site.name} — ${site.tagline}`} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={site.url} />
+    
+    <slot name="head" />
+
+    <!-- ─── Partytown Analytics ─── -->
+    <!--
+      IMPORTANT: Replace G-XXXXXXXXXX with your actual Google Analytics 4 Measurement ID
+      and uncomment the Clarity section when your Clarity ID is available.
+    -->
+    <!-- Google Analytics 4 (GA4) via Partytown -->
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Microsoft Clarity via Partytown (uncomment and replace CLARITY_ID when ready) -->
+    <!--
+    <script type="text/partytown">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "CLARITY_ID");
+    </script>
+    -->
+  </head>
+  <body class="bg-primary-black text-primary-ivory font-body antialiased">
+    <!-- Desktop Navigation -->
+    <header
+      id="main-nav"
+      class="fixed top-0 left-0 right-0 z-40 h-20 flex items-center transition-all duration-300"
+    >
+      <div class="container-wide w-full flex items-center justify-between">
+        <a href="/" class="font-display text-xl font-semibold text-primary-ivory tracking-tight leading-none">
+          The Meridian
+        </a>
+        <div class="hidden lg:flex items-center gap-10">
+          <nav class="flex items-center gap-8" aria-label="Main navigation">
+            {navigation.map((item) => (
+              <a
+                href={item.href}
+                class="nav-link text-sm uppercase tracking-wider font-medium"
+                data-nav-label={item.label}
+                data-nav-label-id={item.labelId}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div class="flex items-center gap-6">
+            <button
+              id="lang-toggle"
+              class="text-xs font-medium tracking-wider text-neutral-400 hover:text-gold transition-colors whitespace-nowrap cursor-pointer"
+              aria-label="Switch language"
+            >
+              <span id="lang-en" class="text-gold">EN</span>
+              <span class="text-neutral-600 mx-1">·</span>
+              <span id="lang-id" class="">ID</span>
+            </button>
+            <a href="/contact#visit" class="btn btn-outline-light btn-sm whitespace-nowrap" data-lang-en="Schedule a Visit" data-lang-id="Jadwalkan Kunjungan">Schedule a Visit</a>
+          </div>
+        </div>
+        <!-- Mobile hamburger -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden flex flex-col gap-1.5 p-2"
+          aria-label="Toggle menu"
+        >
+          <span class="block w-6 h-px bg-primary-ivory transition-transform duration-300"></span>
+          <span class="block w-6 h-px bg-primary-ivory transition-opacity duration-300"></span>
+          <span class="block w-6 h-px bg-primary-ivory transition-transform duration-300"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <div class="flex flex-col items-center justify-center gap-12 text-center">
+        {navigation.map((item, i) => (
+          <a
+            href={item.href}
+            class="text-3xl font-display text-primary-ivory hover:text-gold transition-colors duration-200"
+            style={`transition-delay: ${i * 50}ms`}
+            data-nav-label={item.label}
+            data-nav-label-id={item.labelId}
+          >
+            {item.label}
+          </a>
+        ))}
+        <div class="flex items-center gap-4 mt-4">
+          <button
+            id="lang-toggle-mobile"
+            class="text-sm font-medium tracking-wider text-neutral-400 cursor-pointer"
+            aria-label="Switch language"
+          >
+            <span id="lang-en-mobile" class="text-gold">EN</span>
+            <span class="text-neutral-600 mx-1">·</span>
+            <span id="lang-id-mobile" class="">ID</span>
+          </button>
+        </div>
+        <div class="flex flex-col gap-4 mt-4 w-64">
+          <a href="/contact#visit" class="btn btn-primary btn-md w-full" data-lang-en="Schedule a Visit" data-lang-id="Jadwalkan Kunjungan">Schedule a Visit</a>
+          <a href="/contact#brochure" class="btn btn-outline-light btn-md w-full" data-lang-en="Download Brochure" data-lang-id="Unduh Brosur">Download Brochure</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-black border-t border-primary-ivory/5 pt-16 pb-12">
+      <div class="container-wide">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <!-- Brand -->
+          <div>
+            <a href="/" class="font-display text-xl font-bold text-primary-ivory">The Meridian</a>
+            <p class="mt-4 text-sm text-neutral-400 leading-relaxed">
+              <span class="lang-en">{footer.brand.text}</span>
+              <span class="lang-id">{footer.brand.textId}</span>
+            </p>
+            <div class="flex gap-5 mt-6">
+              {footer.social.map((s) => (
+                <a href={s.href} class="text-neutral-400 hover:text-gold transition-colors" aria-label={s.label}>
+                  {s.icon === 'instagram' && (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  )}
+                  {s.icon === 'linkedin' && (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  )}
+                  {s.icon === 'youtube' && (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+          <!-- Residences -->
+          <div>
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-primary-ivory mb-4">
+              <span class="lang-en">Residences</span><span class="lang-id">Hunian</span>
+            </h4>
+            <ul class="space-y-3">
+              {footer.residences.map((r) => (
+                <li><a href={r.href} class="text-sm text-neutral-400 hover:text-gold transition-colors" data-lang-en={r.label} data-lang-id={r.labelId}>{r.label}</a></li>
+              ))}
+            </ul>
+          </div>
+          <!-- Discover -->
+          <div>
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-primary-ivory mb-4">
+              <span class="lang-en">Discover</span><span class="lang-id">Jelajahi</span>
+            </h4>
+            <ul class="space-y-3">
+              {footer.discover.map((d) => (
+                <li><a href={d.href} class="text-sm text-neutral-400 hover:text-gold transition-colors" data-lang-en={d.label} data-lang-id={d.labelId}>{d.label}</a></li>
+              ))}
+            </ul>
+          </div>
+          <!-- Connect -->
+          <div>
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-primary-ivory mb-4">
+              <span class="lang-en">Connect</span><span class="lang-id">Hubungi</span>
+            </h4>
+            <ul class="space-y-3">
+              {footer.connect.map((c) => (
+                <li><a href={c.href} class="text-sm text-neutral-400 hover:text-gold transition-colors" data-lang-en={c.label} data-lang-id={c.labelId}>{c.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div class="mt-16 pt-8 border-t border-primary-ivory/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-xs text-neutral-500">&copy; {new Date().getFullYear()} The Meridian Residences. [SHOWCASE CONCEPT]</p>
+          <div class="flex gap-6">
+            <a href="/privacy" class="text-xs text-neutral-500 hover:text-gold transition-colors" data-lang-en="Privacy Policy" data-lang-id="Kebijakan Privasi">Privacy Policy</a>
+            <a href="/terms" class="text-xs text-neutral-500 hover:text-gold transition-colors" data-lang-en="Terms" data-lang-id="Ketentuan">Terms</a>
+            <a href="#" class="text-xs text-gold hover:text-gold-hover transition-colors" id="back-to-top" data-lang-en="Back to Top ↑" data-lang-id="Kembali ke Atas ↑">Back to Top ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<script>
+  // Mobile nav toggle
+  const btn = document.getElementById('mobile-menu-btn');
+  const overlay = document.getElementById('mobile-nav');
+  const lines = btn?.querySelectorAll('span');
+  let open = false;
+
+  btn?.addEventListener('click', () => {
+    open = !open;
+    overlay?.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (lines) {
+      lines[0].style.transform = open ? 'rotate(45deg) translate(4px, 4px)' : '';
+      lines[1].style.opacity = open ? '0' : '1';
+      lines[2].style.transform = open ? 'rotate(-45deg) translate(4px, -4px)' : '';
+    }
+  });
+
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      open = false;
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      if (lines) {
+        lines[0].style.transform = '';
+        lines[1].style.opacity = '1';
+        lines[2].style.transform = '';
+      }
+    }
+  });
+
+  // Nav scroll behavior
+  const nav = document.getElementById('main-nav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 200) {
+      nav?.classList.add('!bg-primary-black/85', '!backdrop-blur-md');
+    } else {
+      nav?.classList.remove('!bg-primary-black/85', '!backdrop-blur-md');
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Back to top
+  document.getElementById('back-to-top')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Language toggle
+  function setLang(lang) {
+    localStorage.setItem('meridian-lang', lang);
+    document.documentElement.lang = lang;
+    
+    // Update toggle buttons
+    const isEn = lang === 'en';
+    ['', '-mobile'].forEach(suffix => {
+      const enEl = document.getElementById('lang-en' + suffix);
+      const idEl = document.getElementById('lang-id' + suffix);
+      if (enEl) { enEl.classList.toggle('text-gold', isEn); enEl.classList.toggle('text-neutral-400', !isEn); }
+      if (idEl) { idEl.classList.toggle('text-gold', !isEn); idEl.classList.toggle('text-neutral-400', isEn); }
+    });
+
+    // Update nav labels
+    document.querySelectorAll('[data-nav-label]').forEach(el => {
+      el.textContent = isEn ? el.dataset.navLabel : el.dataset.navLabelId;
+    });
+
+    // Update all data-lang elements
+    document.querySelectorAll('[data-lang-en]').forEach(el => {
+      el.textContent = isEn ? el.dataset.langEn : el.dataset.langId;
+    });
+
+    // Toggle visibility of lang-specific content blocks
+    document.querySelectorAll('.lang-en, .lang-id').forEach(el => {
+      el.style.display = el.classList.contains('lang-' + lang) ? '' : 'none';
+    });
+  }
+
+  // Init
+  const savedLang = localStorage.getItem('meridian-lang') || 'en';
+  setLang(savedLang);
+
+  document.getElementById('lang-toggle')?.addEventListener('click', () => {
+    const current = document.documentElement.lang === 'id' ? 'en' : 'id';
+    setLang(current);
+  });
+  document.getElementById('lang-toggle-mobile')?.addEventListener('click', () => {
+    const current = document.documentElement.lang === 'id' ? 'en' : 'id';
+    setLang(current);
+  });
+
+</script>
+
+<script type="module">
+  import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1/+esm';
+  import gsap from 'https://cdn.jsdelivr.net/npm/gsap@3/+esm';
+  import { ScrollTrigger } from 'https://cdn.jsdelivr.net/npm/gsap@3/ScrollTrigger/+esm';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  // Reveal animations
+  gsap.utils.toArray('.reveal').forEach((el) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+        },
+      }
+    );
+  });
+</script>

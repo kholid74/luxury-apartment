@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { images } from '../data/images';
+---
+
+<Layout>
+  <slot name="head">
+    <title>Location — The Meridian Residences | Kebayoran Baru, South Jakarta</title>
+    <meta name="description" content="The Meridian Residences occupies a prestigious address in Kebayoran Baru, South Jakarta's most coveted enclave — minutes from SCBD, Plaza Senayan, and Pacific Place." />
+  </slot>
+
+  <!-- Hero Mini -->
+  <section class="pt-48 pb-24 bg-primary-black">
+    <div class="container-standard text-center reveal">
+      <p class="overline mb-4"><span class="lang-en">Location</span><span class="lang-id">Lokasi</span></p>
+      <h1 class="font-display text-5xl md:text-6xl font-bold text-primary-ivory leading-tight mb-6">
+        <span class="lang-en">The Address — Kebayoran Baru</span><span class="lang-id">Alamat — Kebayoran Baru</span>
+      </h1>
+      <p class="lang-en text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        The Meridian Residences stands in the heart of Kebayoran Baru, South Jakarta's most enduring prestigious
+        enclave. Here, tree-lined avenues, diplomatic quarters, and international institutions converge to create
+        an address of quiet distinction — where every convenience is within reach and every arrival feels like a
+        homecoming.
+      </p>
+      <p class="lang-id text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        The Meridian Residences berdiri di jantung Kebayoran Baru, enklave prestisius paling abadi di Jakarta
+        Selatan. Di sini, jalanan rindang, kawasan diplomatik, dan institusi internasional bertemu menciptakan
+        sebuah alamat dengan kemuliaan yang tenang — di mana setiap kemudahan dalam jangkauan dan setiap
+        kedatangan terasa seperti pulang ke rumah.
+      </p>
+    </div>
+  </section>
+
+  <!-- Location Banner Image -->
+  <img src={images.location.neighborhood} alt={images.location.neighborhoodAlt} class="w-full h-64 md:h-96 object-cover rounded-sm mt-8" />
+
+  <!-- Neighborhood Narrative -->
+  <section class="bg-primary-black">
+    <div class="container-standard reveal">
+      <div class="max-w-3xl mx-auto">
+        <p class="overline mb-6"><span class="lang-en">The Neighborhood</span><span class="lang-id">Kawasan Sekitar</span></p>
+        <h2 class="font-display text-4xl font-bold text-primary-ivory mb-8"><span class="lang-en">South Jakarta's Most Coveted Enclave</span><span class="lang-id">Enklave Paling Didambakan Jakarta Selatan</span></h2>
+        <div class="space-y-6 text-lg text-neutral-300 leading-relaxed">
+          <p class="lang-en">
+            Kebayoran Baru occupies a singular position in Jakarta's urban geography. Conceived in the 1950s as the city's
+            first planned satellite town — a "garden city" in the grand tradition — it has evolved across seven decades into
+            the archipelago's most desirable residential address.
+          </p>
+          <p class="lang-id">
+            Kebayoran Baru menempati posisi tunggal dalam geografi urban Jakarta. Diciptakan pada tahun 1950-an sebagai
+            kota satelit terencana pertama — sebuah "kota taman" dalam tradisi megah — kawasan ini telah berkembang selama
+            tujuh dekade menjadi alamat hunian paling didambakan di nusantara.
+          </p>
+          <p class="lang-en">
+            What distinguishes Kebayoran Baru from every other precinct in the city is the density of institutional
+            validation it has accumulated: the international schools, the private hospitals, the diplomatic compounds, the
+            private members' clubs. These are not amenities that can be built overnight. They are the product of decades of
+            sustained investment — and they create a neighborhood that continues to appreciate, in every sense of the word.
+          </p>
+          <p class="lang-id">
+            Yang membedakan Kebayoran Baru dari setiap kawasan lain di kota ini adalah kepadatan validasi institusional
+            yang telah terakumulasi: sekolah internasional, rumah sakit swasta, kompleks diplomatik, klub anggota pribadi.
+            Ini bukanlah fasilitas yang dapat dibangun dalam semalam. Mereka adalah hasil dari investasi berkelanjutan
+            selama puluhan tahun — dan menciptakan kawasan yang terus terapresiasi, dalam setiap arti kata.
+          </p>
+          <p class="lang-en">
+            For residents of The Meridian, this translates into something tangible: a life lived within minutes of
+            everything that matters, surrounded by the mature tree canopies and generous green spaces that remain
+            the neighborhood's most precious inheritance.
+          </p>
+          <p class="lang-id">
+            Bagi penghuni The Meridian, ini berarti sesuatu yang nyata: kehidupan yang dijalani dalam hitungan menit dari
+            segala hal yang penting, dikelilingi oleh kanopi pohon dewasa dan ruang hijau yang luas yang tetap menjadi
+            warisan paling berharga kawasan ini.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Landmark Proximity Cards -->
+  <section class="bg-primary-black">
+    <div class="container-standard reveal">
+      <p class="overline mb-6"><span class="lang-en">Proximity</span><span class="lang-id">Kedekatan</span></p>
+      <h2 class="font-display text-4xl font-bold text-primary-ivory mb-12"><span class="lang-en">Landmarks Within Reach</span><span class="lang-id">Tengara Dalam Jangkauan</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Plaza Senayan -->
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-8 card-lift">
+          <h4 class="font-display text-xl font-semibold text-primary-ivory mb-2">Plaza Senayan</h4>
+          <p class="text-sm text-gold font-medium mb-3">~10 minutes</p>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            An iconic destination for luxury retail, fine dining, and premium entertainment in the heart of South Jakarta.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Destinasi ikonik untuk ritel mewah, santapan fine dining, dan hiburan premium di jantung Jakarta Selatan.
+          </p>
+        </div>
+
+        <!-- Pacific Place -->
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-8 card-lift">
+          <h4 class="font-display text-xl font-semibold text-primary-ivory mb-2">Pacific Place</h4>
+          <p class="text-sm text-gold font-medium mb-3">~12 minutes</p>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            A premium shopping and lifestyle destination connected to the Ritz-Carlton Jakarta, in the heart of the SCBD.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Destinasi belanja dan gaya hidup premium yang terhubung dengan Ritz-Carlton Jakarta, di jantung SCBD.
+          </p>
+        </div>
+
+        <!-- SCBD -->
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-8 card-lift">
+          <h4 class="font-display text-xl font-semibold text-primary-ivory mb-2">SCBD</h4>
+          <p class="text-sm text-gold font-medium mb-3">~8 minutes</p>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            Southeast Asia's most concentrated financial precinct — home to global corporations, five-star hotels, and the Jakarta Stock Exchange.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Kawasan finansial paling terkonsentrasi di Asia Tenggara — rumah bagi korporasi global, hotel bintang lima, dan Bursa Efek Jakarta.
+          </p>
+        </div>
+
+        <!-- Pondok Indah -->
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-8 card-lift">
+          <h4 class="font-display text-xl font-semibold text-primary-ivory mb-2">Pondok Indah</h4>
+          <p class="text-sm text-gold font-medium mb-3">~15 minutes</p>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            An established upscale residential area offering premium shopping malls, international hospitals, and golf courses.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Kawasan hunian mapan kelas atas yang menawarkan pusat perbelanjaan premium, rumah sakit internasional, dan lapangan golf.
+          </p>
+        </div>
+
+        <!-- Soekarno-Hatta -->
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-8 card-lift">
+          <h4 class="font-display text-xl font-semibold text-primary-ivory mb-2">Soekarno-Hatta International</h4>
+          <p class="text-sm text-gold font-medium mb-3">~45 minutes</p>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            Indonesia's primary international gateway, connecting Jakarta to major cities across Asia, the Middle East, and beyond.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Gerbang internasional utama Indonesia, menghubungkan Jakarta ke kota-kota besar di seluruh Asia, Timur Tengah, dan sekitarnya.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connectivity -->
+  <section class="bg-primary-black">
+    <div class="container-standard reveal">
+      <p class="overline mb-6"><span class="lang-en">Connectivity</span><span class="lang-id">Konektivitas</span></p>
+      <h2 class="font-display text-4xl font-bold text-primary-ivory mb-8"><span class="lang-en">Effortlessly Connected</span><span class="lang-id">Terhubung Tanpa Hambatan</span></h2>
+      <p class="lang-en text-lg text-neutral-300 max-w-3xl leading-relaxed">
+        The Meridian benefits from direct access to Jakarta's principal arterial roads, including Jalan Sudirman and
+        the inner-city toll network. The recently completed MRT North-South line places the entire city within effortless
+        reach, while Soekarno-Hatta International Airport is accessible in well under an hour — a threshold that makes
+        The Meridian a viable primary residence for the internationally mobile professional.
+      </p>
+      <p class="lang-id text-lg text-neutral-300 max-w-3xl leading-relaxed">
+        The Meridian menikmati akses langsung ke jalan arteri utama Jakarta, termasuk Jalan Sudirman dan jaringan tol
+        dalam kota. Jalur MRT Utara-Selatan yang baru saja selesai menempatkan seluruh kota dalam jangkauan tanpa
+        hambatan, sementara Bandara Internasional Soekarno-Hatta dapat diakses dalam waktu kurang dari satu jam —
+        ambang batas yang menjadikan The Meridian hunian utama yang layak bagi profesional yang mobile secara
+        internasional.
+      </p>
+    </div>
+  </section>
+
+  <!-- Neighborhood Guide -->
+  <section class="bg-primary-black">
+    <div class="container-standard reveal">
+      <p class="overline mb-6"><span class="lang-en">Neighborhood Guide</span><span class="lang-id">Panduan Kawasan</span></p>
+      <h2 class="font-display text-4xl font-bold text-primary-ivory mb-12"><span class="lang-en">A Curated Guide to the Area</span><span class="lang-id">Panduan Kurasi Kawasan</span></h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-6 card-lift">
+          <h4 class="font-display text-lg font-semibold text-gold mb-4"><span class="lang-en">Dining</span><span class="lang-id">Bersantap</span></h4>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            From fine dining establishments to neighborhood bistros, a world of culinary excellence awaits within minutes
+            of The Meridian. South Jakarta's dining scene is among the most dynamic in Southeast Asia.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Dari restoran fine dining hingga bistro lingkungan, dunia keunggulan kuliner menanti dalam hitungan menit
+            dari The Meridian. Dunia kuliner Jakarta Selatan termasuk yang paling dinamis di Asia Tenggara.
+          </p>
+        </div>
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-6 card-lift">
+          <h4 class="font-display text-lg font-semibold text-gold mb-4"><span class="lang-en">Shopping</span><span class="lang-id">Belanja</span></h4>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            Premium malls and curated boutiques line the nearby avenues — offering everything from international luxury
+            houses to Indonesian design ateliers and artisan markets.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Mal premium dan butik kurasi berjejer di sepanjang jalan terdekat — menawarkan segalanya dari rumah mode
+            mewah internasional hingga atelier desain Indonesia dan pasar artisan.
+          </p>
+        </div>
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-6 card-lift">
+          <h4 class="font-display text-lg font-semibold text-gold mb-4"><span class="lang-en">Culture</span><span class="lang-id">Budaya</span></h4>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            Galleries, museums, and performance spaces are woven through the neighborhood fabric — a reflection of Jakarta's
+            growing cultural confidence and creative energy.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Galeri, museum, dan ruang pertunjukan terjalin di seluruh struktur kawasan — cerminan dari kepercayaan
+            diri budaya dan energi kreatif Jakarta yang terus berkembang.
+          </p>
+        </div>
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-6 card-lift">
+          <h4 class="font-display text-lg font-semibold text-gold mb-4"><span class="lang-en">Education</span><span class="lang-id">Pendidikan</span></h4>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            Internationally accredited schools — including British, American, and IB curriculum institutions — are located
+            within the immediate vicinity, serving families who demand the highest educational standards.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Sekolah terakreditasi internasional — termasuk institusi kurikulum Inggris, Amerika, dan IB — berlokasi
+            di sekitar kawasan, melayani keluarga yang menuntut standar pendidikan tertinggi.
+          </p>
+        </div>
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-6 card-lift">
+          <h4 class="font-display text-lg font-semibold text-gold mb-4"><span class="lang-en">Healthcare</span><span class="lang-id">Kesehatan</span></h4>
+          <p class="lang-en text-neutral-400 text-sm leading-relaxed">
+            JCI-accredited hospitals with comprehensive specialist services — including emergency, maternity, and
+            executive health screening — are within close proximity.
+          </p>
+          <p class="lang-id text-neutral-400 text-sm leading-relaxed">
+            Rumah sakit terakreditasi JCI dengan layanan spesialis komprehensif — termasuk darurat, persalinan, dan
+            pemeriksaan kesehatan eksekutif — berada dalam jarak dekat.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map CTA -->
+  <section class="bg-primary-black">
+    <div class="container-standard text-center reveal">
+      <div class="bg-primary-midnight rounded-sm p-16">
+        <h2 class="font-display text-4xl font-bold text-primary-ivory mb-6"><span class="lang-en">Find Your Way</span><span class="lang-id">Temukan Jalan Anda</span></h2>
+        <p class="text-lg text-neutral-300 max-w-xl mx-auto mb-8 leading-relaxed">
+          Visit our Sales Gallery to experience the neighborhood firsthand and discover why Kebayoran Baru remains
+          the address of choice for those who understand what location truly means.
+        </p>
+        <a href="/contact#visit" class="btn btn-outline-gold btn-lg" data-lang-en="View on Map" data-lang-id="Lihat di Peta">View on Map</a>
+      </div>
+    </div>
+  </section>
+</Layout>

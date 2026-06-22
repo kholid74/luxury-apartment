@@ -1,0 +1,185 @@
+---
+// PlaceholderImage.astro — The Meridian Residences
+// SVG architectural placeholder with shimmer animation
+
+export interface Props {
+  /** CSS aspect-ratio value, e.g. "16/9", "3/2", "4/5" */
+  aspectRatio?: string;
+  /** Additional CSS classes */
+  class?: string;
+  /** Optional label text shown below the SVG pattern */
+  text?: string;
+}
+
+const {
+  aspectRatio = '16/9',
+  class: className = '',
+  text,
+} = Astro.props;
+
+// Build a unique animation ID per instance so multiple placeholders don't clash
+const uid = Math.random().toString(36).substring(2, 10);
+---
+
+<div
+  style={`aspect-ratio: ${aspectRatio};`}
+  class:list={[
+    'relative overflow-hidden',
+    className,
+  ]}
+>
+  <!-- Background gradient -->
+  <div
+    class="absolute inset-0"
+    style="background: linear-gradient(135deg, #0F1A2C 0%, #1B2631 40%, #0F1A2C 100%);"
+  ></div>
+
+  <!-- SVG architectural pattern -->
+  <svg
+    class="absolute inset-0 w-full h-full"
+    viewBox="0 0 800 600"
+    preserveAspectRatio="xMidYMid slice"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <!-- Subtle grid -->
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#C9A96E" stroke-width="0.3" opacity="0.06" />
+      </pattern>
+      <pattern id="diagonal" width="80" height="80" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="80" x2="80" y2="0" stroke="#C9A96E" stroke-width="0.2" opacity="0.04" />
+      </pattern>
+      <!-- Shimmer gradient mask -->
+      <linearGradient id={`shimmer-${uid}`} x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0)" />
+        <stop offset="40%" stop-color="rgba(255,255,255,0)" />
+        <stop offset="50%" stop-color="rgba(255,255,255,0.03)" />
+        <stop offset="60%" stop-color="rgba(255,255,255,0)" />
+        <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+        <animateTransform
+          attributeName="gradientTransform"
+          type="translate"
+          from="-1 -1"
+          to="1 1"
+          dur="3s"
+          repeatCount="indefinite"
+        />
+      </linearGradient>
+      <!-- Gold accent glow -->
+      <radialGradient id={`glow-${uid}`} cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.08" />
+        <stop offset="100%" stop-color="#C9A96E" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+
+    <!-- Base grid patterns -->
+    <rect width="800" height="600" fill="url(#grid)" />
+    <rect width="800" height="600" fill="url(#diagonal)" />
+
+    <!-- Central architectural outline — abstract building form -->
+    <g opacity="0.12" stroke="#C9A96E" fill="none" stroke-width="1">
+      <!-- Main tower -->
+      <rect x="300" y="80" width="200" height="460" rx="2" />
+      <!-- Tower top detail -->
+      <rect x="330" y="60" width="140" height="20" rx="1" />
+      <line x1="330" y1="45" x2="330" y2="60" />
+      <line x1="470" y1="45" x2="470" y2="60" />
+      <line x1="330" y1="45" x2="350" y2="32" />
+      <line x1="470" y1="45" x2="450" y2="32" />
+      <line x1="350" y1="32" x2="450" y2="32" />
+      <!-- Pillar / column lines -->
+      <line x1="350" y1="80" x2="350" y2="540" stroke-width="0.5" />
+      <line x1="450" y1="80" x2="450" y2="540" stroke-width="0.5" />
+      <!-- Horizontal floor lines -->
+      <line x1="300" y1="140" x2="500" y2="140" stroke-width="0.5" />
+      <line x1="300" y1="200" x2="500" y2="200" stroke-width="0.5" />
+      <line x1="300" y1="260" x2="500" y2="260" stroke-width="0.5" />
+      <line x1="300" y1="320" x2="500" y2="320" stroke-width="0.5" />
+      <line x1="300" y1="380" x2="500" y2="380" stroke-width="0.5" />
+      <line x1="300" y1="440" x2="500" y2="440" stroke-width="0.5" />
+      <line x1="300" y1="500" x2="500" y2="500" stroke-width="0.5" />
+      <!-- Entrance arch -->
+      <path d="M 370 540 L 370 490 Q 400 470 430 490 L 430 540" stroke-width="1.2" />
+      <!-- Windows -->
+      <rect x="360" y="150" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="410" y="150" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="360" y="210" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="410" y="210" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="360" y="270" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="410" y="270" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="360" y="330" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="410" y="330" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="360" y="390" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="410" y="390" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="360" y="450" width="30" height="30" rx="1" stroke-width="0.6" />
+      <rect x="410" y="450" width="30" height="30" rx="1" stroke-width="0.6" />
+      <!-- Side wings -->
+      <rect x="220" y="240" width="80" height="300" rx="1" opacity="0.6" />
+      <rect x="500" y="240" width="80" height="300" rx="1" opacity="0.6" />
+      <line x1="220" y1="300" x2="300" y2="300" stroke-width="0.5" opacity="0.6" />
+      <line x1="220" y1="360" x2="300" y2="360" stroke-width="0.5" opacity="0.6" />
+      <line x1="220" y1="420" x2="300" y2="420" stroke-width="0.5" opacity="0.6" />
+      <line x1="500" y1="300" x2="580" y2="300" stroke-width="0.5" opacity="0.6" />
+      <line x1="500" y1="360" x2="580" y2="360" stroke-width="0.5" opacity="0.6" />
+      <line x1="500" y1="420" x2="580" y2="420" stroke-width="0.5" opacity="0.6" />
+      <!-- Ground line -->
+      <line x1="100" y1="540" x2="700" y2="540" stroke-width="1" opacity="0.5" />
+      <!-- Abstract landscape lines -->
+      <line x1="100" y1="555" x2="300" y2="550" stroke-width="0.4" opacity="0.3" />
+      <line x1="500" y1="548" x2="700" y2="552" stroke-width="0.4" opacity="0.3" />
+    </g>
+
+    <!-- Corner decorative elements -->
+    <g opacity="0.08" stroke="#C9A96E" fill="none" stroke-width="0.8">
+      <!-- Top-left corner -->
+      <path d="M 20 40 L 20 20 L 40 20" />
+      <path d="M 20 45 L 20 25 L 45 25" stroke-width="0.5" />
+      <!-- Top-right -->
+      <path d="M 760 40 L 780 40 L 780 20 L 760 20" />
+      <path d="M 755 45 L 780 45 L 780 20 L 755 20" stroke-width="0.5" />
+      <!-- Bottom-left -->
+      <path d="M 20 560 L 20 580 L 40 580" />
+      <path d="M 20 555 L 20 575 L 45 575" stroke-width="0.5" />
+      <!-- Bottom-right -->
+      <path d="M 760 580 L 780 580 L 780 560" />
+      <path d="M 755 575 L 780 575 L 780 555 L 755 555" stroke-width="0.5" />
+    </g>
+
+    <!-- Shimmer overlay -->
+    <rect width="800" height="600" fill={`url(#shimmer-${uid})`} />
+
+    <!-- Center gold glow -->
+    <circle cx="400" cy="300" r="300" fill={`url(#glow-${uid})`} />
+
+    <!-- Meridian line (vertical accent) -->
+    <line x1="400" y1="0" x2="400" y2="600" stroke="#C9A96E" stroke-width="0.5" opacity="0.06" />
+    <line x1="0" y1="300" x2="800" y2="300" stroke="#C9A96E" stroke-width="0.5" opacity="0.06" />
+  </svg>
+
+  <!-- Optional text label -->
+  {
+    text && (
+      <div class="absolute bottom-4 left-4 right-4 z-10">
+        <span class="text-xs uppercase tracking-wider text-primary-gold/40 font-medium">
+          {text}
+        </span>
+      </div>
+    )
+  }
+
+  <!-- Slot for children (e.g. card overlays) -->
+  <slot />
+
+  <!-- Shimmer animation CSS -->
+  <style>
+    @keyframes shimmer-move {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+  </style>
+</div>

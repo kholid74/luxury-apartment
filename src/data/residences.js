@@ -1,0 +1,108 @@
+// Residence data — The Meridian Residences [SHOWCASE CONCEPT]
+
+export const residences = [
+  {
+    slug: "grand-penthouse",
+    name: "The Grand Penthouse",
+    tagline: "A Perspective Unlike Any Other",
+    taglineId: "Perspektif yang Tiada Duanya",
+    description:
+      "Occupying the crown of The Meridian, The Grand Penthouse is a dual-level sanctuary that redefines vertical living. Floor-to-ceiling windows frame a 270-degree panorama of the Jakarta skyline, while a private rooftop terrace offers an elevated realm for entertaining or quiet contemplation. Every surface, fixture, and sightline has been composed with the precision of a masterwork.",
+    descriptionId:
+      "Menempati puncak The Meridian, The Grand Penthouse adalah hunian dua tingkat yang mendefinisikan ulang kehidupan vertikal. Jendela dari lantai ke langit-langit membingkai panorama 270-derajat cakrawala Jakarta, sementara teras atap pribadi menawarkan ruang yang elegan untuk menjamu atau kontemplasi tenang. Setiap permukaan, perlengkapan, dan garis pandang dikomposisikan dengan presisi sebuah mahakarya.",
+    size: "450 sqm",
+    bedrooms: 4,
+    bathrooms: "4.5",
+    ceilingHeight: "3.4m (living), 3.2m (bedrooms)",
+    orientation: "North-East, 270° city views",
+    features: [
+      "Dual-level layout with internal staircase",
+      "Private rooftop terrace with infinity plunge pool",
+      "Floor-to-ceiling windows throughout",
+      "Separate service entrance and quarters",
+      "Walk-in wine cellar and humidor room",
+      "Private elevator lobby",
+      "Smart home automation system",
+    ],
+    priceIndication: "Upon Request",
+    image: "/images/residences/grand-penthouse-living.jpg",
+  },
+  {
+    slug: "signature-suite",
+    name: "The Signature Suite",
+    tagline: "Space Composed With Intention",
+    taglineId: "Ruang yang Dikomposisikan dengan Niat",
+    description:
+      "The Signature Suite is a corner residence designed for those who understand that luxury is as much about proportion as it is about finish. A wraparound balcony extends the living space outward, creating a seamless flow between interior refinement and the city beyond. Generously scaled rooms allow for both grand entertaining and intimate retreat.",
+    descriptionId:
+      "The Signature Suite adalah hunian sudut yang dirancang untuk mereka yang memahami bahwa kemewahan adalah tentang proporsi sebagaimana tentang penyelesaian akhir. Balkon melingkar memperluas ruang hidup ke luar, menciptakan aliran mulus antara kehalusan interior dan kota di luarnya. Ruangan berskala luas memungkinkan baik hiburan megah maupun tempat peristirahatan yang intim.",
+    size: "280 sqm",
+    bedrooms: 3,
+    bathrooms: "3.5",
+    ceilingHeight: "3.2m",
+    orientation: "Corner unit, dual-aspect South-West views",
+    features: [
+      "Corner residence with wraparound balcony",
+      "Open-plan living and dining spanning 85 sqm",
+      "Master suite with dual walk-in wardrobes",
+      "Chef's kitchen with integrated appliances",
+      "Guest powder room",
+      "Dedicated study alcove",
+      "Motorized blinds and curtains",
+    ],
+    priceIndication: "Upon Request",
+    image: "/images/residences/signature-suite-living.jpg",
+  },
+  {
+    slug: "executive-residence",
+    name: "The Executive Residence",
+    tagline: "Where Family Finds Its Form",
+    taglineId: "Di Mana Keluarga Menemukan Bentuknya",
+    description:
+      "Conceived for the modern family that values space, privacy, and connectivity in equal measure, The Executive Residence offers a thoughtful three-bedroom layout. An open-plan living area anchors the home, while each bedroom suite provides a private retreat. It is a residence that grows with its inhabitants — adaptable, enduring, refined.",
+    descriptionId:
+      "Diciptakan untuk keluarga modern yang menghargai ruang, privasi, dan konektivitas dalam ukuran yang setara, The Executive Residence menawarkan tata letak tiga kamar tidur yang penuh pertimbangan. Area ruang tamu terbuka menjadi jangkar rumah, sementara setiap suite kamar tidur menyediakan tempat peristirahatan pribadi. Sebuah hunian yang tumbuh bersama penghuninya — adaptif, abadi, dan elegan.",
+    size: "210 sqm",
+    bedrooms: 3,
+    bathrooms: 3,
+    ceilingHeight: "3.1m",
+    orientation: "East-facing, morning light",
+    features: [
+      "Three en-suite bedrooms with walk-in wardrobes",
+      "Open-plan living, dining, and family area",
+      "Dry and wet kitchen configuration",
+      "Separate utility and laundry room",
+      "Dedicated home office nook",
+      "Family-friendly layout with clear sightlines",
+      "Ample built-in storage throughout",
+    ],
+    priceIndication: "Upon Request",
+    image: "/images/residences/executive-residence-living.jpg",
+  },
+  {
+    slug: "prestige-apartment",
+    name: "The Prestige Apartment",
+    tagline: "The Introduction to Elevated Living",
+    taglineId: "Pengantar Menuju Kehidupan yang Lebih Tinggi",
+    description:
+      "The Prestige Apartment is an invitation — a considered entry point into The Meridian way of life. At 160 square metres, this two-bedroom residence distills the essential qualities of the collection: generous proportions, considered finishes, and an unwavering attention to detail. It is compact without compromise, refined without excess.",
+    descriptionId:
+      "The Prestige Apartment adalah sebuah undangan — titik masuk yang dipertimbangkan ke dalam cara hidup The Meridian. Seluas 160 meter persegi, hunian dua kamar tidur ini menyaring kualitas esensial dari koleksi ini: proporsi yang luas, penyelesaian yang dipertimbangkan, dan perhatian tak tergoyahkan terhadap detail. Ringkas tanpa kompromi, elegan tanpa berlebihan.",
+    size: "160 sqm",
+    bedrooms: 2,
+    bathrooms: "2.5",
+    ceilingHeight: "3.0m",
+    orientation: "West-facing, sunset views",
+    features: [
+      "Two bedroom suites with en-suite bathrooms",
+      "Open-plan living and dining area",
+      "Integrated kitchen with premium appliances",
+      "Guest powder room",
+      "Private balcony off the living area",
+      "Built-in wardrobes with custom millwork",
+      "Entry-level luxury without compromise",
+    ],
+    priceIndication: "Upon Request",
+    image: "/images/residences/prestige-apartment-living.jpg",
+  },
+];

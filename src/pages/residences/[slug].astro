@@ -1,0 +1,206 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { residences } from '../../data/residences';
+import { images, getResidenceImages } from '../../data/images';
+
+export function getStaticPaths() {
+  return residences.map((res) => ({
+    params: { slug: res.slug },
+    props: { residence: res },
+  }));
+}
+
+const { residence } = Astro.props;
+const residenceImages = getResidenceImages(residence.slug);
+---
+
+<Layout>
+  <!-- Hero -->
+  <section class="relative h-[60vh] min-h-[400px] flex items-end overflow-hidden !pt-0 !pb-0">
+    <div class="absolute inset-0">
+      <img
+        src={images.hero.exterior}
+        alt={images.hero.exteriorAlt}
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="relative z-10 container-wide pb-16 reveal">
+      <p class="overline mb-4">The Collection</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-primary-ivory mb-4">
+        <span class="lang-en">{residence.name}</span><span class="lang-id">{residence.name}</span>
+      </h1>
+      <p class="text-gold text-xl md:text-2xl font-display italic"><span class="lang-en">{residence.tagline}</span><span class="lang-id">{residence.taglineId}</span></p>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section>
+    <div class="container-narrow">
+      <div class="reveal mb-16">
+        <p class="lang-en text-lg md:text-xl text-neutral-300 leading-relaxed mb-8">
+          {residence.description}
+        </p>
+        <p class="lang-id text-lg md:text-xl text-neutral-300 leading-relaxed mb-8">
+          {residence.descriptionId}
+        </p>
+      </div>
+
+      <!-- Mini Gallery -->
+      <div class="reveal mb-16">
+        <h3 class="font-display text-2xl text-primary-ivory mb-6">Gallery</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="relative overflow-hidden rounded-sm aspect-[4/3] group">
+            <img
+              src={residenceImages.living}
+              alt={residenceImages.livingAlt}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <span class="text-primary-ivory text-sm font-display">Living Room</span>
+            </div>
+          </div>
+          <div class="relative overflow-hidden rounded-sm aspect-[4/3] group">
+            <img
+              src={residenceImages.bedroom}
+              alt={residenceImages.bedroomAlt}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <span class="text-primary-ivory text-sm font-display">Bedroom</span>
+            </div>
+          </div>
+          {residenceImages.terrace && (
+            <div class="relative overflow-hidden rounded-sm aspect-[4/3] group">
+              <img
+                src={residenceImages.terrace}
+                alt={residenceImages.terraceAlt}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-primary-ivory text-sm font-display">Terrace</span>
+              </div>
+            </div>
+          )}
+          {residenceImages.balcony && (
+            <div class="relative overflow-hidden rounded-sm aspect-[4/3] group">
+              <img
+                src={residenceImages.balcony}
+                alt={residenceImages.balconyAlt}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-primary-ivory text-sm font-display">Balcony</span>
+              </div>
+            </div>
+          )}
+          {residenceImages.kitchen && (
+            <div class="relative overflow-hidden rounded-sm aspect-[4/3] group">
+              <img
+                src={residenceImages.kitchen}
+                alt={residenceImages.kitchenAlt}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-primary-ivory text-sm font-display">Kitchen</span>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- Specs Table -->
+      <div class="reveal mb-16">
+        <h3 class="font-display text-2xl text-primary-ivory mb-6"><span class="lang-en">Specifications</span><span class="lang-id">Spesifikasi</span></h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-primary-ivory/5">
+          <div class="bg-primary-black p-6">
+            <p class="text-xs text-neutral-500 uppercase tracking-wider mb-1"><span class="lang-en">Size</span><span class="lang-id">Luas</span></p>
+            <p class="text-primary-ivory font-semibold">{residence.size}</p>
+          </div>
+          <div class="bg-primary-black p-6">
+            <p class="text-xs text-neutral-500 uppercase tracking-wider mb-1"><span class="lang-en">Bedrooms</span><span class="lang-id">Kamar Tidur</span></p>
+            <p class="text-primary-ivory font-semibold">{residence.bedrooms}</p>
+          </div>
+          <div class="bg-primary-black p-6">
+            <p class="text-xs text-neutral-500 uppercase tracking-wider mb-1"><span class="lang-en">Bathrooms</span><span class="lang-id">Kamar Mandi</span></p>
+            <p class="text-primary-ivory font-semibold">{residence.bathrooms}</p>
+          </div>
+          <div class="bg-primary-black p-6">
+            <p class="text-xs text-neutral-500 uppercase tracking-wider mb-1"><span class="lang-en">Ceiling Height</span><span class="lang-id">Tinggi Plafon</span></p>
+            <p class="text-primary-ivory font-semibold">{residence.ceilingHeight}</p>
+          </div>
+        </div>
+        <div class="mt-px bg-primary-black p-6">
+          <p class="text-xs text-neutral-500 uppercase tracking-wider mb-1"><span class="lang-en">Orientation</span><span class="lang-id">Orientasi</span></p>
+          <p class="text-primary-ivory font-semibold">{residence.orientation}</p>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="reveal mb-16">
+        <h3 class="font-display text-2xl text-primary-ivory mb-6"><span class="lang-en">Key Features</span><span class="lang-id">Fitur Utama</span></h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {
+            residence.features.map((f) => (
+              <li class="flex items-start gap-3 text-neutral-300">
+                <span class="text-gold mt-0.5 flex-shrink-0 text-lg">&#10003;</span>
+                <span>{f}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Price Indication -->
+      <div class="reveal mb-16 text-center">
+        <p class="text-xs text-neutral-500 uppercase tracking-wider mb-2">Price Indication</p>
+        <p class="text-gold text-2xl font-display font-semibold">{residence.priceIndication}</p>
+      </div>
+
+      <!-- CTAs -->
+      <div class="reveal flex flex-col sm:flex-row gap-4 justify-center pt-8 border-t border-primary-ivory/5">
+        <a href="/contact#visit" class="btn btn-primary btn-lg" data-lang-en="Schedule a Private Visit" data-lang-id="Jadwalkan Kunjungan">Schedule a Private Visit</a>
+        <a href="/contact#brochure" class="btn btn-outline-light btn-lg" data-lang-en="Download Brochure" data-lang-id="Unduh Brosur">Download Brochure</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section class="!pt-16 !pb-24">
+    <div class="container-wide">
+      <div class="flex justify-between items-center reveal">
+        {
+          (() => {
+            const idx = residences.findIndex((r) => r.slug === residence.slug);
+            const prev = idx > 0 ? residences[idx - 1] : null;
+            const next = idx < residences.length - 1 ? residences[idx + 1] : null;
+            return (
+              <>
+                <div>
+                  {prev && (
+                    <a href={`/residences/${prev.slug}`} class="text-neutral-400 hover:text-gold transition-colors text-sm" data-lang-en={`&larr; Previous`} data-lang-id={`&larr; Sebelumnya`}>
+                      &larr; Previous
+                    </a>
+                  )}
+                </div>
+                <a href="/residences" class="text-gold text-sm">View All Residences</a>
+                <div>
+                  {next && (
+                    <a href={`/residences/${next.slug}`} class="text-neutral-400 hover:text-gold transition-colors text-sm" data-lang-en={`Next &rarr;`} data-lang-id={`Berikutnya &rarr;`}>
+                      Next &rarr;
+                    </a>
+                  )}
+                </div>
+              </>
+            );
+          })()
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

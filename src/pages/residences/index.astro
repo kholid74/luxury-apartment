@@ -1,0 +1,103 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { residences } from '../../data/residences';
+import { images } from '../../data/images';
+
+const residenceImages = {
+  'grand-penthouse': images.residences.grandPenthouse,
+  'signature-suite': images.residences.signatureSuite,
+  'executive-residence': images.residences.executiveResidence,
+  'prestige-apartment': images.residences.prestigeApartment,
+};
+---
+
+<Layout>
+  <!-- Hero Mini -->
+  <section class="relative pt-48 pb-24 bg-primary-midnight">
+    <div class="container-wide text-center reveal">
+      <p class="overline mb-4">The Meridian Residences</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-primary-ivory mb-6">
+        The Collection
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+        Four distinct residences, each composed with intention. From the commanding
+        Grand Penthouse to the considered Prestige Apartment — discover the residence
+        that speaks to your elevation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Residences Grid -->
+  <section class="!pt-16">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {
+          residences.map((res, i) => (
+            <div class="bg-primary-charcoal overflow-hidden card-lift reveal">
+              <!-- Real image -->
+              <div class="relative aspect-[16/9] bg-primary-midnight overflow-hidden">
+                <img
+                  src={residenceImages[res.slug]?.living}
+                  alt={residenceImages[res.slug]?.livingAlt || res.name}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 card-gradient"></div>
+              </div>
+
+              <!-- Content -->
+              <div class="p-8 md:p-10">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div>
+                    <h2 class="font-display text-2xl md:text-3xl font-bold text-primary-ivory mb-2">
+                      {res.name}
+                    </h2>
+                    <p class="text-gold text-lg font-display italic">{res.tagline}</p>
+                  </div>
+                  <span class="text-gold text-sm font-medium whitespace-nowrap">{res.size}</span>
+                </div>
+
+                <div class="mb-6">
+                  <ul class="space-y-2">
+                    {
+                      res.features.slice(0, 3).map((f) => (
+                        <li class="flex items-start gap-2 text-sm text-neutral-400">
+                          <span class="text-gold mt-0.5 flex-shrink-0">&#10003;</span>
+                          {f}
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </div>
+
+                <a
+                  href={`/residences/${res.slug}`}
+                  class="inline-flex items-center gap-2 text-gold text-sm hover:text-gold-hover transition-colors"
+                >
+                  View Full Details &rarr;
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="!pt-24 !pb-32">
+    <div class="container-narrow text-center reveal">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-primary-ivory mb-6">
+        Find Your Residence
+      </h2>
+      <p class="text-lg text-neutral-400 mb-10 leading-relaxed">
+        We invite you to experience each residence in person. Schedule a private
+        appointment to tour our presentation gallery.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact#visit" class="btn btn-primary btn-lg">Schedule a Private Visit</a>
+        <a href="/contact#brochure" class="btn btn-outline-light btn-lg">Download Brochure</a>
+      </div>
+    </div>
+  </section>
+</Layout>

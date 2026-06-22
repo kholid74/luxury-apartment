@@ -1,0 +1,362 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { images } from '../data/images';
+import { residences } from '../data/residences';
+
+const residenceImageMap = {
+  'grand-penthouse': images.residences.grandPenthouse,
+  'signature-suite': images.residences.signatureSuite,
+  'executive-residence': images.residences.executiveResidence,
+  'prestige-apartment': images.residences.prestigeApartment,
+};
+
+const trustProps = [
+  {
+    icon: '◆',
+    title: 'Prime South Jakarta Address',
+    desc: 'Kebayoran Baru — the city\'s most distinguished residential enclave, minutes from SCBD and Senayan.',
+  },
+  {
+    icon: '◇',
+    title: 'Award-Winning Architecture',
+    desc: 'A landmark of contemporary design, conceived by an internationally recognised architectural practice.',
+  },
+  {
+    icon: '◆',
+    title: 'Curated Living Experience',
+    desc: 'Every detail considered, every finish deliberate — a sanctuary composed for those who value refinement.',
+  },
+];
+
+const amenitiesPreview = [
+  {
+    icon: '~',
+    name: 'Sky Infinity Pool',
+    desc: 'A 25-metre heated infinity pool suspended above the city skyline.',
+  },
+  {
+    icon: '◲',
+    name: 'Private Cinema',
+    desc: 'An intimate twelve-seat screening room with 4K projection and Dolby Atmos.',
+  },
+  {
+    icon: '❖',
+    name: 'Wellness Pavilion',
+    desc: 'Spa suite, Finnish sauna, steam room, and cold plunge — a sanctuary for restoration.',
+  },
+  {
+    icon: '◈',
+    name: "Resident's Lounge",
+    desc: 'Double-height library with curated shelves, club chairs, and writing desks.',
+  },
+  {
+    icon: '◫',
+    name: 'Fitness Centre',
+    desc: 'Comprehensive facility for strength, cardio, and functional training with natural light.',
+  },
+  {
+    icon: '❦',
+    name: 'Sky Garden',
+    desc: 'Terraced garden with indigenous planting, reflection pools, and shaded seating.',
+  },
+];
+
+const galleryLayoutClasses = [
+  'md:col-span-2 md:row-span-2',
+  '',
+  '',
+  'md:col-span-2',
+];
+
+const proximityPlaces = [
+  { name: 'Plaza Senayan', time: '5 min', desc: 'Premium shopping, dining, and entertainment complex.' },
+  { name: 'SCBD', time: '8 min', desc: 'Jakarta\'s premier central business and lifestyle district.' },
+  { name: 'Pondok Indah', time: '12 min', desc: 'Established residential area with international schools and medical facilities.' },
+];
+
+const investmentStats = [
+  { valueEn: 'Prime Location', valueId: 'Lokasi Prima', label: 'Kebayoran Baru remains South Jakarta\'s most sought-after residential postcode, with limited developable land and enduring prestige.' },
+  { valueEn: 'Scarcity Value', valueId: 'Nilai Kelangkaan', label: 'Only 48 residences across 28 storeys — a deliberately limited collection that ensures exclusivity and privacy.' },
+  { valueEn: 'Enduring Quality', valueId: 'Kualitas Abadi', label: 'Built to the highest standards of construction and finish, with materials and craftsmanship selected for generations of use.' },
+];
+---
+
+<Layout>
+  <!-- ═══════════ HERO ═══════════ -->
+  <section
+    class="relative h-screen flex items-center justify-center overflow-hidden !pt-0 !pb-0"
+    style={`background-image: url('${images.hero.exterior}'); background-size: cover; background-position: center;`}
+  >
+    <!-- Overlay gradient -->
+    <div class="absolute inset-0 hero-gradient"></div>
+
+    <div class="relative z-10 container-wide text-center reveal">
+      <p class="overline mb-6">The Meridian Residences</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-primary-ivory leading-tight mb-8 max-w-5xl mx-auto text-balance">
+        <span class="lang-en">The Art of Vertical Living</span>
+        <span class="lang-id">Seni Kehidupan Vertikal</span>
+      </h1>
+      <p class="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto mb-12 leading-relaxed">
+        <span class="lang-en">A curated collection of luxury residences in Kebayoran Baru, South Jakarta. Where architectural heritage meets contemporary refinement.</span>
+        <span class="lang-id">Koleksi hunian mewah yang dikurasi di Kebayoran Baru, Jakarta Selatan. Di mana warisan arsitektur bertemu dengan kemurnian kontemporer.</span>
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact#visit" class="btn btn-primary btn-lg" data-lang-en="Schedule a Visit" data-lang-id="Jadwalkan Kunjungan">Schedule a Visit</a>
+        <a href="/contact#brochure" class="btn btn-outline-light btn-lg" data-lang-en="Download Brochure" data-lang-id="Unduh Brosur">Download Brochure</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TRUST BAR ═══════════ -->
+  <section class="bg-primary-charcoal !py-16">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center reveal">
+        {
+          trustProps.map((item) => (
+            <div class="flex flex-col items-center gap-3">
+              <span class="text-gold text-2xl" aria-hidden="true">{item.icon}</span>
+              <h5 class="text-primary-ivory font-display text-lg font-semibold">{item.title}</h5>
+              <p class="text-sm text-neutral-400 max-w-xs mx-auto leading-relaxed">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ RESIDENCE OVERVIEW ═══════════ -->
+  <section>
+    <div class="container-wide">
+      <div class="text-center mb-16 reveal">
+        <p class="overline mb-4">The Collection</p>
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-primary-ivory mb-6">
+          <span class="lang-en">Residences</span>
+          <span class="lang-id">Hunian</span>
+        </h2>
+        <p class="text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+          Four distinct living propositions, each composed with intention. From the commanding
+          Grand Penthouse to the considered Prestige Apartment — a residence for every elevation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        {
+          residences.map((res) => (
+            <a
+              href={`/residences/${res.slug}`}
+              class="group card-lift bg-primary-charcoal overflow-hidden"
+            >
+              <!-- Residence image -->
+              <div style="aspect-ratio: 4/5;" class="relative overflow-hidden">
+                <img
+                  src={residenceImageMap[res.slug].living}
+                  alt={residenceImageMap[res.slug].livingAlt}
+                  class="w-full h-full object-cover"
+                />
+                <!-- Card gradient overlay -->
+                <div class="absolute inset-0 card-gradient"></div>
+                <!-- Text on image -->
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <h4 class="font-display text-xl font-semibold text-primary-ivory mb-1">{res.name}</h4>
+                  <p class="text-sm text-neutral-400 mb-2">{res.size}</p>
+                  <span class="text-gold text-sm group-hover:underline" data-lang-en="View Residence →" data-lang-id="Lihat Hunian →">View Residence &rarr;</span>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ AMENITIES PREVIEW ═══════════ -->
+  <section class="bg-primary-charcoal">
+    <div class="container-wide">
+      <div class="text-center mb-16 reveal">
+        <p class="overline mb-4">
+          <span class="lang-en">The Experience</span>
+          <span class="lang-id">Pengalaman</span>
+        </p>
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-primary-ivory mb-6">
+          <span class="lang-en">Amenities</span>
+          <span class="lang-id">Fasilitas</span>
+        </h2>
+        <p class="text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+          A comprehensive suite of resident-exclusive facilities, designed to elevate
+          every dimension of daily life — from wellness to entertaining.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+        {
+          amenitiesPreview.map((amenity) => (
+            <div class="bg-primary-black/50 p-8 hover:bg-primary-midnight/30 transition-colors duration-300">
+              <span class="text-gold text-2xl mb-4 block" aria-hidden="true">{amenity.icon}</span>
+              <h5 class="font-display text-lg font-semibold text-primary-ivory mb-3">{amenity.name}</h5>
+              <p class="text-sm text-neutral-400 leading-relaxed">{amenity.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="/amenities" class="text-gold hover:text-gold-hover transition-colors text-sm uppercase tracking-wider">
+          Explore All Amenities &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ GALLERY TEASER ═══════════ -->
+  <section>
+    <div class="container-wide">
+      <div class="text-center mb-16 reveal">
+        <p class="overline mb-4">
+          <span class="lang-en">A Closer Look</span>
+          <span class="lang-id">Lebih Dekat</span>
+        </p>
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-primary-ivory mb-6">
+          <span class="lang-en">Gallery</span>
+          <span class="lang-id">Galeri</span>
+        </h2>
+        <p class="text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+          A visual journey through the architecture, interiors, and atmosphere
+          that define The Meridian Residences.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
+        {
+          images.gallery.slice(0, 4).map((img, i) => (
+            <div
+              class={`relative overflow-hidden ${galleryLayoutClasses[i]}`}
+              style="aspect-ratio: 16/9;"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                class="w-full h-full object-cover"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="/gallery" class="text-gold hover:text-gold-hover transition-colors text-sm uppercase tracking-wider" data-lang-en="View Full Gallery →" data-lang-id="Lihat Galeri Lengkap →">
+          View Full Gallery &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LOCATION ═══════════ -->
+  <section class="bg-primary-charcoal">
+    <div class="container-wide">
+      <div class="text-center mb-16 reveal">
+        <p class="overline mb-4">
+          <span class="lang-en">The Address</span>
+          <span class="lang-id">Alamat</span>
+        </p>
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-primary-ivory mb-6">Kebayoran Baru</h2>
+        <p class="text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+          Kebayoran Baru is South Jakarta's most distinguished residential enclave — a leafy,
+          established neighbourhood where embassies, heritage homes, and diplomatic residences
+          sit alongside the city's finest dining, shopping, and cultural institutions. A location
+          of enduring prestige, now home to The Meridian.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+        {
+          proximityPlaces.map((place) => (
+            <div class="text-center p-8">
+              <p class="text-gold text-3xl font-display font-bold mb-2">{place.time}</p>
+              <h5 class="font-display text-lg font-semibold text-primary-ivory mb-2">{place.name}</h5>
+              <p class="text-sm text-neutral-400 leading-relaxed">{place.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="/location" class="text-gold hover:text-gold-hover transition-colors text-sm uppercase tracking-wider" data-lang-en="Explore the Neighbourhood →" data-lang-id="Jelajahi Kawasan →">
+          Explore the Neighbourhood &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ INVESTMENT ═══════════ -->
+  <section class="bg-primary-midnight">
+    <div class="container-standard">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-primary-ivory mb-6">
+          <span class="lang-en">An Investment in Elevation</span>
+          <span class="lang-id">Investasi dalam Elevasi</span>
+        </h2>
+        <p class="text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+          Beyond a residence, The Meridian represents a considered acquisition of space, quality,
+          and address — an asset of enduring worth in Indonesia's most dynamic property market.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 reveal">
+        {
+          investmentStats.map((stat) => (
+            <div class="text-center p-6">
+              <p class="text-gold text-xl font-display font-bold mb-4">
+                <span class="lang-en">{stat.valueEn}</span>
+                <span class="lang-id">{stat.valueId}</span>
+              </p>
+              <p class="text-sm text-neutral-400 leading-relaxed">{stat.label}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center reveal">
+        <a href="/investment" class="btn btn-outline-gold btn-md" data-lang-en="Download Prospectus" data-lang-id="Unduh Prospektus">Download Prospectus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TESTIMONIAL ═══════════ -->
+  <section>
+    <div class="container-narrow reveal">
+      <blockquote class="pull-quote">
+        <p class="font-display italic text-2xl md:text-3xl text-primary-ivory leading-relaxed mb-6">
+          <span class="lang-en">&ldquo;The Meridian understands that true luxury is not about opulence —
+          it is about proportion, light, and the quiet confidence of a home
+          composed with genuine intention.&rdquo;</span>
+          <span class="lang-id">&ldquo;Setiap detail di The Meridian berbicara tentang niat — bukan tentang
+          kemewahan yang mencolok, melainkan tentang proporsi, cahaya, dan keyakinan
+          tenang dari sebuah hunian yang dirancang dengan tujuan yang tulus.&rdquo;</span>
+        </p>
+        <footer class="text-sm text-neutral-400 not-italic">
+          <span class="font-semibold text-neutral-300">Architectural Digest Indonesia</span>
+          <span class="mx-2">&mdash;</span>
+          <span class="text-gold text-xs uppercase tracking-wider">[SHOWCASE CONCEPT]</span>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA ═══════════ -->
+  <section class="bg-primary-charcoal">
+    <div class="container-narrow text-center reveal">
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-primary-ivory mb-6">
+        <span class="lang-en">Begin Your Journey</span>
+        <span class="lang-id">Mulai Perjalanan Anda</span>
+      </h2>
+      <p class="text-lg text-neutral-400 mb-12 leading-relaxed max-w-xl mx-auto">
+        We invite you to experience The Meridian Residences in person. Schedule a private
+        appointment to tour our presentation gallery and discover a new elevation of living.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact#visit" class="btn btn-primary btn-lg" data-lang-en="Schedule a Private Visit" data-lang-id="Jadwalkan Kunjungan Pribadi">Schedule a Private Visit</a>
+        <a href="https://wa.me/6281234567890" class="btn btn-outline-light btn-lg" data-lang-en="Enquire via WhatsApp" data-lang-id="Hubungi via WhatsApp">Enquire via WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</Layout>

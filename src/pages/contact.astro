@@ -1,0 +1,304 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { residences } from '../data/residences';
+---
+
+<Layout>
+  <slot name="head">
+    <title>Contact — The Meridian Residences | Begin a Conversation</title>
+    <meta name="description" content="Get in touch with The Meridian Residences — schedule a private viewing, enquire about availability, or download the investment prospectus." />
+  </slot>
+
+  <!-- Hero Mini -->
+  <section class="pt-48 pb-24 bg-primary-black">
+    <div class="container-standard text-center reveal">
+      <p class="overline mb-4">
+        <span class="lang-en">Contact</span>
+        <span class="lang-id">Kontak</span>
+      </p>
+      <h1 class="font-display text-5xl md:text-6xl font-bold text-primary-ivory leading-tight mb-6">
+        <span class="lang-en">Begin a Conversation</span>
+        <span class="lang-id">Mulai Percakapan</span>
+      </h1>
+      <p class="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        <span class="lang-en">Whether you are seeking more information, wish to schedule a private viewing, or are ready to explore
+        acquisition — we welcome the opportunity to speak with you.</span>
+        <span class="lang-id">Baik Anda mencari informasi lebih lanjut, ingin menjadwalkan kunjungan pribadi, atau siap untuk menjajaki akuisisi — kami menyambut kesempatan untuk berbicara dengan Anda.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Enquiry Form -->
+  <section class="bg-primary-black" id="enquiry">
+    <div class="container-standard reveal">
+      <div class="max-w-2xl mx-auto">
+        <p class="overline mb-6">
+          <span class="lang-en">Enquiry</span>
+          <span class="lang-id">Pertanyaan</span>
+        </p>
+        <h2 class="font-display text-4xl font-bold text-primary-ivory mb-12">
+          <span class="lang-en">Send Us a Message</span>
+          <span class="lang-id">Kirimkan Pesan kepada Kami</span>
+        </h2>
+
+        <!--
+          Web3Forms integration:
+          Replace YOUR_WEB3FORMS_ACCESS_KEY with your actual key from https://web3forms.com/
+        -->
+        <form
+          id="enquiry-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="space-y-8"
+        >
+          <!-- Web3Forms required hidden fields -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="New Enquiry — The Meridian Residences" />
+          <input type="hidden" name="redirect" value="false" />
+          <!-- Honeypot anti-spam -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="form-group">
+              <label class="form-label" for="full-name">
+                <span class="lang-en">Full Name</span>
+                <span class="lang-id">Nama Lengkap</span>
+              </label>
+              <input type="text" id="full-name" name="full_name" class="form-input" placeholder="Your full name"
+                data-lang-placeholder-en="Your full name"
+                data-lang-placeholder-id="Nama lengkap Anda"
+              required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">
+                <span class="lang-en">Email Address</span>
+                <span class="lang-id">Alamat Email</span>
+              </label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="form-group">
+              <label class="form-label" for="phone">
+                <span class="lang-en">Phone Number</span>
+                <span class="lang-id">Nomor Telepon</span>
+              </label>
+              <input type="tel" id="phone" name="phone" class="form-input" placeholder="+62 ..." />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="interest">
+                <span class="lang-en">Residence Interest</span>
+                <span class="lang-id">Hunian yang Diminati</span>
+              </label>
+              <select id="interest" name="residence_interest" class="form-input bg-primary-black appearance-none cursor-pointer">
+                <option value="" class="bg-primary-black text-neutral-500" data-lang-en="Select a residence" data-lang-id="Pilih hunian">Select a residence</option>
+                {residences.map((r) => (
+                  <option value={r.slug} class="bg-primary-black text-primary-ivory">{r.name}</option>
+                ))}
+                <option value="general" class="bg-primary-black text-primary-ivory" data-lang-en="General Enquiry" data-lang-id="Pertanyaan Umum">General Enquiry</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">
+              <span class="lang-en">Message</span>
+              <span class="lang-id">Pesan</span>
+            </label>
+            <textarea id="message" name="message" rows="4" class="form-input resize-none" placeholder="How can we assist you?"
+              data-lang-placeholder-en="How can we assist you?"
+              data-lang-placeholder-id="Bagaimana kami dapat membantu Anda?"
+            required></textarea>
+          </div>
+
+          <!-- Error message container (hidden by default) -->
+          <div id="form-error" class="hidden text-error text-sm font-body"></div>
+
+          <button type="submit" id="form-submit-btn" class="btn btn-primary btn-lg w-full md:w-auto" data-lang-en="Send Enquiry" data-lang-id="Kirim Pertanyaan">
+            <span id="form-submit-text">Send Enquiry</span>
+            <span id="form-submit-loader" class="hidden">
+              <svg class="animate-spin -ml-1 mr-2 h-5 w-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Sending...
+            </span>
+          </button>
+        </form>
+
+        <!-- Success message (hidden by default) -->
+        <div id="form-success" class="hidden bg-primary-charcoal border border-gold/10 rounded-sm p-10 text-center mt-8">
+          <p class="text-2xl font-display font-bold text-primary-ivory mb-4">
+            <span class="lang-en">Thank You</span>
+            <span class="lang-id">Terima Kasih</span>
+          </p>
+          <p class="text-lg text-neutral-300 leading-relaxed">
+            <span class="lang-en">Thank you for your enquiry. Our team will be in touch shortly.</span>
+            <span class="lang-id">Terima kasih atas pertanyaan Anda. Tim kami akan segera menghubungi Anda.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Visit Booking -->
+  <section class="bg-primary-black" id="visit">
+    <div class="container-standard reveal">
+      <div class="max-w-2xl mx-auto">
+        <p class="overline mb-6">
+          <span class="lang-en">Private Viewing</span>
+          <span class="lang-id">Kunjungan Pribadi</span>
+        </p>
+        <h2 class="font-display text-4xl font-bold text-primary-ivory mb-8">
+          <span class="lang-en">Schedule a Site Visit</span>
+          <span class="lang-id">Jadwalkan Kunjungan</span>
+        </h2>
+        <p class="text-lg text-neutral-300 mb-10 leading-relaxed">
+          <span class="lang-en">Experience The Meridian Residences firsthand. Private viewings of the Sales Gallery are available by appointment, where you can explore material selections, review floor plans, and discuss the acquisition process in detail with our dedicated team.</span>
+          <span class="lang-id">Rasakan The Meridian Residences secara langsung. Kunjungan pribadi ke Galeri Penjualan tersedia dengan janji temu, di mana Anda dapat menjelajahi pilihan material, meninjau denah lantai, dan mendiskusikan proses akuisisi secara mendetail dengan tim kami yang berdedikasi.</span>
+        </p>
+        <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-8 space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+              <span class="text-gold">📅</span>
+            </div>
+            <div>
+              <p class="font-semibold text-primary-ivory">
+                <span class="lang-en">By Appointment Only</span>
+                <span class="lang-id">Hanya dengan Janji Temu</span>
+              </p>
+              <p class="text-sm text-neutral-400">Monday – Saturday, 10:00 – 17:00</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+              <span class="text-gold">📍</span>
+            </div>
+            <div>
+              <p class="font-semibold text-primary-ivory">
+                <span class="lang-en">Sales Gallery</span>
+                <span class="lang-id">Galeri Penjualan</span>
+              </p>
+              <p class="text-sm text-neutral-400">[SHOWCASE CONCEPT] — Kebayoran Baru, South Jakarta</p>
+            </div>
+          </div>
+          <div class="pt-4">
+            <a href="/contact#enquiry" class="btn btn-outline-gold btn-md" data-lang-en="Book a Viewing" data-lang-id="Pesan Kunjungan">Book a Viewing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp CTA -->
+  <section class="bg-primary-black">
+    <div class="container-standard reveal">
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="overline mb-6">
+          <span class="lang-en">Instant Connection</span>
+          <span class="lang-id">Koneksi Instan</span>
+        </p>
+        <h2 class="font-display text-4xl font-bold text-primary-ivory mb-8">
+          <span class="lang-en">Prefer to Message?</span>
+          <span class="lang-id">Lebih Suka Berkirim Pesan?</span>
+        </h2>
+        <p class="text-lg text-neutral-300 mb-8 leading-relaxed">
+          <span class="lang-en">Reach us directly on WhatsApp for immediate assistance. Our team is available to answer your questions, arrange viewings, and provide detailed information at your convenience.</span>
+          <span class="lang-id">Hubungi kami langsung melalui WhatsApp untuk bantuan segera. Tim kami tersedia untuk menjawab pertanyaan Anda, mengatur kunjungan, dan memberikan informasi mendetail sesuai kenyamanan Anda.</span>
+        </p>
+        <a href="https://wa.me/6281234567890" class="btn btn-primary btn-lg" data-lang-en="Chat on WhatsApp" data-lang-id="Chat via WhatsApp">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sales Gallery Info -->
+  <section class="bg-primary-black">
+    <div class="container-standard reveal">
+      <div class="max-w-2xl mx-auto bg-primary-midnight border border-gold/10 rounded-sm p-10">
+        <p class="text-xs text-gold uppercase tracking-widest mb-6">[SHOWCASE CONCEPT]</p>
+        <p class="overline mb-6">
+          <span class="lang-en">Sales Gallery</span>
+          <span class="lang-id">Galeri Penjualan</span>
+        </p>
+        <h2 class="font-display text-4xl font-bold text-primary-ivory mb-6">
+          <span class="lang-en">Visit Us</span>
+          <span class="lang-id">Kunjungi Kami</span>
+        </h2>
+        <div class="space-y-4 text-neutral-300">
+          <p class="leading-relaxed">
+            <span class="lang-en">The Meridian Residences Sales Gallery has been conceived as more than a sales office — it is a curated introduction to the philosophy, materials, and atmosphere that define the project. Every element, from the lighting to the material samples, has been selected to convey the quality of life that awaits.</span>
+            <span class="lang-id">Galeri Penjualan The Meridian Residences dirancang lebih dari sekadar kantor penjualan — ini adalah pengantar yang dikurasi untuk filosofi, material, dan atmosfer yang mendefinisikan proyek ini. Setiap elemen, dari pencahayaan hingga sampel material, dipilih untuk menyampaikan kualitas hidup yang menanti.</span>
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div>
+              <p class="text-sm text-gold font-medium mb-1">
+                <span class="lang-en">Address</span>
+                <span class="lang-id">Alamat</span>
+              </p>
+              <p class="text-sm text-neutral-400 leading-relaxed">Kebayoran Baru<br/>South Jakarta, Indonesia</p>
+            </div>
+            <div>
+              <p class="text-sm text-gold font-medium mb-1">
+                <span class="lang-en">Hours</span>
+                <span class="lang-id">Jam Operasional</span>
+              </p>
+              <p class="text-sm text-neutral-400 leading-relaxed">Monday – Saturday<br/>10:00 – 17:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('enquiry-form');
+  const submitBtn = document.getElementById('form-submit-btn');
+  const submitText = document.getElementById('form-submit-text');
+  const submitLoader = document.getElementById('form-submit-loader');
+  const formError = document.getElementById('form-error');
+  const formSuccess = document.getElementById('form-success');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Clear previous error
+    formError.classList.add('hidden');
+    formError.textContent = '';
+
+    // Show loading state
+    submitText.classList.add('hidden');
+    submitLoader.classList.remove('hidden');
+    submitBtn.disabled = true;
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Hide form, show success message
+        form.style.display = 'none';
+        formSuccess.classList.remove('hidden');
+      } else {
+        // Show server error
+        formError.textContent = result.message || 'Something went wrong. Please try again.';
+        formError.classList.remove('hidden');
+      }
+    } catch (err) {
+      // Network error
+      formError.textContent = 'Unable to send your message. Please check your connection and try again.';
+      formError.classList.remove('hidden');
+    } finally {
+      // Reset loading state on error (on success the form is hidden so no need)
+      if (!formSuccess.classList.contains('hidden') === false || formError.classList.contains('hidden') === false) {
+        submitText.classList.remove('hidden');
+        submitLoader.classList.add('hidden');
+        submitBtn.disabled = false;
+      }
+    }
+  });
+</script>

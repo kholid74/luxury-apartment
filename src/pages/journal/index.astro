@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { images } from '../../data/images';
+---
+
+<Layout>
+  <slot name="head">
+    <title>The Journal — The Meridian Residences | Insights &amp; Perspectives</title>
+    <meta name="description" content="Editorial insights and perspectives on luxury living, South Jakarta, property investment, and the craft of curated residences from The Meridian Residences." />
+  </slot>
+
+  <!-- Hero Mini -->
+  <section class="pt-48 pb-24 bg-primary-black">
+    <div class="container-standard text-center reveal">
+      <p class="overline mb-4"><span class="lang-en">The Journal</span><span class="lang-id">Jurnal</span></p>
+      <h1 class="font-display text-5xl md:text-6xl font-bold text-primary-ivory leading-tight mb-6">
+        <span class="lang-en">The Journal</span><span class="lang-id">Jurnal</span>
+      </h1>
+      <p class="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        <span class="lang-en">Perspectives on architecture, neighborhood, investment, and the art of living well — curated
+        for those who seek a deeper understanding of what makes an address extraordinary.</span>
+        <span class="lang-id">Perspektif tentang arsitektur, lingkungan, investasi, dan seni menjalani hidup dengan baik — dikurasi
+        bagi mereka yang mendambakan pemahaman lebih dalam tentang apa yang membuat sebuah alamat menjadi istimewa.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Article Grid -->
+  <section class="bg-primary-black">
+    <div class="container-standard reveal">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Article 1 -->
+        <a href="/journal/the-art-of-vertical-living" class="group bg-primary-charcoal border border-primary-ivory/5 rounded-sm overflow-hidden card-lift block">
+          <div class="aspect-video bg-primary-midnight overflow-hidden">
+            <img src={images.journal.architecture} alt={images.journal.architectureAlt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          </div>
+          <div class="p-8">
+            <span class="text-xs text-gold uppercase tracking-widest font-medium">Design &amp; Craftsmanship</span>
+            <h3 class="font-display text-2xl font-semibold text-primary-ivory mt-3 mb-4 group-hover:text-gold transition-colors">
+              The Art of Vertical Living
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+              How architecture shapes the luxury experience — from the weight of a door to the height of a ceiling,
+              the quiet vocabulary of refined space operates on the senses long before the conscious mind registers
+              what it has encountered.
+            </p>
+            <span class="text-gold text-sm font-medium inline-flex items-center gap-1" data-lang-en="Read More →" data-lang-id="Baca Selengkapnya →">
+              Read More <span class="transition-transform group-hover:translate-x-1">→</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Article 2 -->
+        <a href="/journal/south-jakarta-evolution" class="group bg-primary-charcoal border border-primary-ivory/5 rounded-sm overflow-hidden card-lift block">
+          <div class="aspect-video bg-primary-midnight overflow-hidden">
+            <img src={images.journal.cityscape} alt={images.journal.cityscapeAlt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          </div>
+          <div class="p-8">
+            <span class="text-xs text-gold uppercase tracking-widest font-medium">Lifestyle &amp; Neighborhood</span>
+            <h3 class="font-display text-2xl font-semibold text-primary-ivory mt-3 mb-4 group-hover:text-gold transition-colors">
+              South Jakarta's Evolution
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+              From garden city to global address — the story of how a planned suburban retreat became the most coveted
+              residential address in the archipelago.
+            </p>
+            <span class="text-gold text-sm font-medium inline-flex items-center gap-1" data-lang-en="Read More →" data-lang-id="Baca Selengkapnya →">
+              Read More <span class="transition-transform group-hover:translate-x-1">→</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Article 3 -->
+        <a href="/journal/understanding-luxury-property-investment" class="group bg-primary-charcoal border border-primary-ivory/5 rounded-sm overflow-hidden card-lift block">
+          <div class="aspect-video bg-primary-midnight overflow-hidden">
+            <img src={images.journal.investment} alt={images.journal.investmentAlt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          </div>
+          <div class="p-8">
+            <span class="text-xs text-gold uppercase tracking-widest font-medium">Investment Intelligence</span>
+            <h3 class="font-display text-2xl font-semibold text-primary-ivory mt-3 mb-4 group-hover:text-gold transition-colors">
+              Understanding Luxury Property Investment
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+              A primer for the discerning buyer — understanding the structural forces that shape value in Indonesian
+              luxury real estate and why they differ from more familiar investment territories.
+            </p>
+            <span class="text-gold text-sm font-medium inline-flex items-center gap-1" data-lang-en="Read More →" data-lang-id="Baca Selengkapnya →">
+              Read More <span class="transition-transform group-hover:translate-x-1">→</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Article 4 -->
+        <a href="/journal/the-craft-of-curated-living" class="group bg-primary-charcoal border border-primary-ivory/5 rounded-sm overflow-hidden card-lift block">
+          <div class="aspect-video bg-primary-midnight overflow-hidden">
+            <img src={images.journal.craftsmanship} alt={images.journal.craftsmanshipAlt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          </div>
+          <div class="p-8">
+            <span class="text-xs text-gold uppercase tracking-widest font-medium">Brand Narrative</span>
+            <h3 class="font-display text-2xl font-semibold text-primary-ivory mt-3 mb-4 group-hover:text-gold transition-colors">
+              The Craft of Curated Living
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+              Behind The Meridian Residences — a proposition built not on square metres but on intention, where every
+              material, every surface, and every sightline has been considered.
+            </p>
+            <span class="text-gold text-sm font-medium inline-flex items-center gap-1" data-lang-en="Read More →" data-lang-id="Baca Selengkapnya →">
+              Read More <span class="transition-transform group-hover:translate-x-1">→</span>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

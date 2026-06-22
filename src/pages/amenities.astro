@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { amenities, amenitiesCategories } from '../data/amenities';
+
+const categoryLabelsId = {
+  wellness: 'Kebugaran',
+  entertainment: 'Hiburan',
+  social: 'Sosial',
+  outdoor: 'Luar Ruangan',
+  service: 'Layanan',
+  practical: 'Praktis',
+};
+---
+
+<Layout>
+  <slot name="head">
+    <title>Amenities &amp; Facilities — The Meridian Residences</title>
+    <meta name="description" content="Explore the curated collection of amenities at The Meridian Residences — from the Sky Infinity Pool to the Private Cinema and Concierge Service." />
+  </slot>
+
+  <!-- Hero Mini -->
+  <section class="pt-48 pb-24 bg-primary-black">
+    <div class="container-standard text-center reveal">
+      <p class="overline mb-4"><span class="lang-en">Amenities &amp; Facilities</span><span class="lang-id">Fasilitas &amp; Layanan</span></p>
+      <h1 class="font-display text-5xl md:text-6xl font-bold text-primary-ivory leading-tight mb-6">
+        <span class="lang-en">Amenities &amp; Facilities</span><span class="lang-id">Fasilitas &amp; Layanan</span>
+      </h1>
+      <p class="lang-en text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        A curated collection of spaces and services designed to elevate every dimension of daily life — from
+        wellness and entertainment to the quiet practicalities that make a residence feel like home.
+      </p>
+      <p class="lang-id text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        Koleksi ruang dan layanan yang dikurasi untuk meningkatkan setiap dimensi kehidupan sehari-hari — dari
+        kebugaran dan hiburan hingga kepraktisan yang tenang yang membuat hunian terasa seperti rumah.
+      </p>
+    </div>
+  </section>
+
+  <!-- Amenities by Category -->
+  {
+    amenitiesCategories.map((category) => {
+      const items = amenities.filter((a) => a.category === category.id);
+      if (items.length === 0) return null;
+      return (
+        <section class="bg-primary-black">
+          <div class="container-standard reveal">
+            <h3 class="font-display text-3xl font-bold text-gold mb-12"><span class="lang-en">{category.label}</span><span class="lang-id">{categoryLabelsId[category.id]}</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {items.map((amenity) => (
+                <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-8 card-lift reveal">
+                  <!-- Icon placeholder -->
+                  <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-6">
+                    <span class="text-gold text-lg">✦</span>
+                  </div>
+                  <h4 class="font-display text-xl font-semibold text-primary-ivory mb-3">
+                    <span class="lang-en">{amenity.name}</span><span class="lang-id">{amenity.nameId}</span>
+                  </h4>
+                  <p class="lang-en text-neutral-400 leading-relaxed mb-6">
+                    {amenity.description}
+                  </p>
+                  <p class="lang-id text-neutral-400 leading-relaxed mb-6">
+                    {amenity.descriptionId}
+                  </p>
+                  {amenity.features && amenity.features.length > 0 && (
+                    <>
+                      <h5 class="font-display text-sm font-semibold text-gold uppercase tracking-wider mb-3"><span class="lang-en">Features</span><span class="lang-id">Fitur</span></h5>
+                      <ul class="space-y-2">
+                        {amenity.features.map((feature) => (
+                          <li class="flex items-start gap-3 text-sm text-neutral-300">
+                            <span class="text-gold mt-0.5 flex-shrink-0">—</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    })
+  }
+
+  <!-- CTA -->
+  <section class="bg-primary-black">
+    <div class="container-standard text-center reveal">
+      <div class="bg-primary-charcoal border border-primary-ivory/5 rounded-sm p-16">
+        <h2 class="font-display text-4xl font-bold text-primary-ivory mb-6">Experience It Firsthand</h2>
+        <p class="text-lg text-neutral-300 max-w-xl mx-auto mb-8 leading-relaxed">
+          Schedule a private tour to explore the amenities and discover how The Meridian elevates everyday living.
+        </p>
+        <a href="/contact#visit" class="btn btn-primary btn-lg" data-lang-en="Schedule a Visit" data-lang-id="Jadwalkan Kunjungan">Schedule a Visit</a>
+      </div>
+    </div>
+  </section>
+</Layout>
